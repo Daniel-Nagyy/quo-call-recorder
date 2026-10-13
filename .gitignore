@@ -1,0 +1,7 @@
+# NEVER commit the signing key. It fixes the extension ID: publishing it lets
+# anyone ship a signed "update" to every managed browser in the company.
+extension.pem
+*.pem
+
+# Built artefacts belong on a GitHub Release, not in the repo.
+*.crx

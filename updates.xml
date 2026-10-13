@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+  Chrome update manifest for a self-hosted (non-Web-Store) extension.
+
+  Chrome polls THIS file every few hours. It compares the version below with the
+  installed one and, when this is newer, downloads the .crx at `codebase`.
+
+  Two rules that break things if ignored:
+    1. `appid` is fixed by extension.pem. Lose that key and every managed browser
+       sees a different extension, so keep it out of the repo and back it up.
+    2. `version` must match the version in the .crx's manifest.json exactly, and
+       must increase on every release, or Chrome will not upgrade.
+
+  Host this file at a URL that never changes (the raw repo URL below). Only the
+  `codebase` and `version` change when you ship a new build.
+-->
+<gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
+  <app appid='kbcnjcgikeadnikgppijagaaefkgfobi'>
+    <updatecheck
+      codebase='https://github.com/Daniel-Nagyy/quo-call-recorder/releases/download/v4.4/quo-call-recorder-4.4.crx'
+      version='4.4' />
+  </app>
+</gupdate>

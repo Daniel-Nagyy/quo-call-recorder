@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "Quo Call Recorder",
+  "version": "4.4",
+  "description": "Automatically records every Quo call (both sides) and saves it to Google Drive, named by driver, date and time.",
+  "permissions": [
+    "alarms",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://script.google.com/*",
+    "https://script.googleusercontent.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Quo calls are recorded automatically",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.quo.com/*",
+        "https://*.openphone.com/*"
+      ],
+      "js": [
+        "call-recorder.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN",
+      "match_about_blank": true,
+      "match_origin_as_fallback": true
+    },
+    {
+      "matches": [
+        "https://*.quo.com/*",
+        "https://*.openphone.com/*"
+      ],
+      "js": [
+        "bridge.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true
+    }
+  ]
+}
